@@ -34,6 +34,15 @@ def explore_directory(directory):
     
     return dir_info
 
+def read_sensitive_file(file_path):
+    """Reads and prints the contents of a sensitive file."""
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+        print(f"\nContents of {file_path}:\n{content}")
+    except Exception as e:
+        print(f"Failed to read {file_path}: {e}")
+
 def print_info(info, indent=0):
     """Pretty prints the collected information."""
     spacing = ' ' * indent
@@ -54,3 +63,7 @@ if __name__ == "__main__":
     root_directory = "."  # Change this to the directory you want to explore
     directory_info = explore_directory(root_directory)
     print_info(directory_info)
+
+    # Example of reading sensitive files (use with caution)
+    sensitive_file = "/etc/passwd"  # Change this to the sensitive file path you want to access
+    read_sensitive_file(sensitive_file)
